@@ -1,0 +1,69 @@
+{
+  "title": "Top Gun: Maverick",
+  "imdb_id": "tt1745960",
+  "year": 2022,
+  "runtime_minutes": 130,
+  "platforms": ["netflix", "prime", "paramount"],
+  "timestamps": [
+    {
+      "start": "00:08:15",
+      "end": "00:08:45",
+      "type": "profanity",
+      "severity": 4,
+      "description": "Brief strong language in bar scene",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "00:23:30",
+      "end": "00:24:15",
+      "type": "profanity",
+      "severity": 5,
+      "description": "Multiple instances of strong language during confrontation",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "00:45:00",
+      "end": "00:46:30",
+      "type": "nudity",
+      "severity": 3,
+      "description": "Beach football scene - shirtless men, women in bikinis",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "01:05:20",
+      "end": "01:06:45",
+      "type": "nudity",
+      "severity": 6,
+      "description": "Implied intimate scene - no explicit nudity shown",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "01:35:00",
+      "end": "01:42:00",
+      "type": "violence",
+      "severity": 7,
+      "description": "Intense aerial combat sequence with explosions",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "01:48:30",
+      "end": "01:52:00",
+      "type": "violence",
+      "severity": 8,
+      "description": "Climactic battle scene - aircraft destroyed, pilots in danger",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    }
+  ],
+  "metadata": {
+    "last_updated": "2025-01-17T00:00:00Z",
+    "contributors": ["FilterFlix Team"],
+    "confidence_score": 0.6,
+    "version": 1
+  }
+}

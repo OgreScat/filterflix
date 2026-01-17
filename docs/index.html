@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FilterFlix - Skip Unwanted Scenes on Netflix & Streaming</title>
+  <meta name="description" content="Smart content filtering for streaming. Skip, mute, or blur unwanted scenes on Netflix, Prime Video, Disney+, HBO Max, and Hulu.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FilterFlix - Watch What You Want. Skip What You Don't.">
+  <meta property="og:description" content="Smart content filtering for Netflix, Prime Video, Disney+, HBO Max, and Hulu.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://filterflix.app">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FilterFlix - Smart Content Filtering for Streaming">
+  <meta name="twitter:description" content="Skip, mute, or blur scenes you don't want to see. Works on Netflix, Prime, Disney+, and more.">
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%236366f1' rx='20' width='100' height='100'/><text y='70' x='50' text-anchor='middle' fill='white' font-size='50' font-family='Arial' font-weight='bold'>FF</text></svg>">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #8b5cf6;
+      --bg-dark: #0f0f1a;
+      --bg-card: #1a1a2e;
+      --text: #ffffff;
+      --text-muted: #9ca3af;
+      --accent: #22c55e;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .platforms {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .platform-badge {
+      background: var(--bg-card);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+      color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* CTA */
+    .cta-box {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+      margin: 0 auto 80px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cta-box h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .cta-form {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 16px 20px;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .cta-form input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .cta-form button {
+      padding: 16px 32px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .cta-note {
+      margin-top: 15px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* How It Works */
+    .how-it-works {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 50px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .step {
+      background: var(--bg-card);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .step-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .step h4 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* Features */
+    .features {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .feature {
+      background: var(--bg-card);
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .feature h5 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Legal */
+    .legal-badge {
+      text-align: center;
+      padding: 40px 20px;
+      margin: 40px 0;
+    }
+
+    .legal-badge .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      padding: 15px 25px;
+      border-radius: 30px;
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    /* FAQ */
+    .faq {
+      padding: 60px 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .faq-item summary {
+      padding: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--primary);
+    }
+
+    .faq-item[open] summary::after {
+      content: '-';
+    }
+
+    .faq-content {
+      padding: 0 20px 20px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 60px;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      .hero {
+        padding: 50px 20px 40px;
+      }
+
+      .cta-box {
+        padding: 25px;
+        margin: 0 15px 60px;
+      }
+
+      .cta-form {
+        flex-direction: column;
+      }
+
+      .cta-form button {
+        width: 100%;
+      }
+    }
+
+    /* Success message */
+    .success-message {
+      display: none;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">
+      <div class="logo-icon">FF</div>
+      <span class="logo-text">FilterFlix</span>
+    </a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Watch What You Want.<br><span>Skip What You Don't.</span></h1>
+      <p>Smart content filtering for streaming. Skip, mute, or blur unwanted scenes on your favorite platforms.</p>
+
+      <div class="platforms">
+        <span class="platform-badge">Netflix</span>
+        <span class="platform-badge">Prime Video</span>
+        <span class="platform-badge">Disney+</span>
+        <span class="platform-badge">HBO Max</span>
+        <span class="platform-badge">Hulu</span>
+      </div>
+    </section>
+
+    <section class="cta-box">
+      <h3>Join the Beta</h3>
+      <form class="cta-form" id="betaForm">
+        <input type="email" placeholder="Enter your email" required id="emailInput">
+        <button type="submit">Get Early Access</button>
+      </form>
+      <p class="cta-note">Free during beta. No credit card required.</p>
+      <div class="success-message" id="successMessage">
+        🎉 You're on the list! We'll email you when FilterFlix is ready.
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <h2 class="section-title">How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">⬇️</div>
+          <h4>1. Install Extension</h4>
+          <p>Add FilterFlix to Chrome in one click. Takes 5 seconds.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">⚙️</div>
+          <h4>2. Configure</h4>
+          <p>Choose what to filter: nudity, profanity, violence. Set your preferences.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">🎬</div>
+          <h4>3. Watch</h4>
+          <p>Start any movie or show. FilterFlix automatically handles the rest.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <h2 class="section-title">Features</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-icon">⏭️</div>
+          <h5>Skip Scenes</h5>
+          <p>Automatically skip past filtered content</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔇</div>
+          <h5>Mute Audio</h5>
+          <p>Silence profanity while video continues</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🌫️</div>
+          <h5>Blur Video</h5>
+          <p>Blur the screen during sensitive scenes</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎚️</div>
+          <h5>Adjustable</h5>
+          <p>Set severity thresholds that work for you</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">👨‍👩‍👧</div>
+          <h5>Family Profiles</h5>
+          <p>Different settings for different viewers</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📺</div>
+          <h5>5 Platforms</h5>
+          <p>Works across all major streaming services</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="legal-badge">
+      <div class="badge">
+        ✓ Family Movie Act 2005 Compliant
+      </div>
+    </div>
+
+    <section class="faq">
+      <h2 class="section-title">FAQ</h2>
+
+      <details class="faq-item">
+        <summary>Is this legal?</summary>
+        <div class="faq-content">
+          Yes. The Family Movie Act of 2005 (17 USC § 110(11)) explicitly permits technology that skips or mutes content for private home viewing, as long as no permanent copy is created. FilterFlix operates on content you already have legitimate access to through your own streaming subscriptions.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do I need my own streaming subscriptions?</summary>
+        <div class="faq-content">
+          Yes. FilterFlix is a filtering tool, not a streaming service. You need your own active subscriptions to Netflix, Prime Video, Disney+, etc. We don't provide access to any content.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How accurate are the filters?</summary>
+        <div class="faq-content">
+          Our timestamps are generated from multiple sources including IMDb Parents Guide, community contributions, and AI analysis. High-confidence timestamps are marked as verified. We're constantly improving accuracy through user feedback.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if a movie isn't covered?</summary>
+        <div class="faq-content">
+          You can request timestamps for any movie through our extension. Community members can also contribute timestamps and earn free subscription months in return.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How much will it cost?</summary>
+        <div class="faq-content">
+          FilterFlix is free during beta. Our planned pricing is $7.99/month or $59.99/year. Beta users will receive a lifetime discount.
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 FilterFlix. Made for families who love great stories.</p>
+    <p><a href="mailto:support@filterflix.app">support@filterflix.app</a></p>
+  </footer>
+
+  <script>
+    // Simple form handling - replace with actual integration
+    document.getElementById('betaForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+
+      // Store locally for now (replace with actual API)
+      const waitlist = JSON.parse(localStorage.getItem('filterflix_waitlist') || '[]');
+      waitlist.push({ email, timestamp: new Date().toISOString() });
+      localStorage.setItem('filterflix_waitlist', JSON.stringify(waitlist));
+
+      // Show success
+      document.getElementById('successMessage').classList.add('show');
+      document.getElementById('emailInput').value = '';
+
+      // Log for development
+      console.log('Beta signup:', email);
+
+      // In production, you'd send to:
+      // - Mailchimp API
+      // - Google Sheets via Apps Script
+      // - Supabase
+      // - Your own backend
+    });
+  </script>
+</body>
+</html>

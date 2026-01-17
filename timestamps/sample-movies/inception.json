@@ -1,0 +1,69 @@
+{
+  "title": "Inception",
+  "imdb_id": "tt1375666",
+  "year": 2010,
+  "runtime_minutes": 148,
+  "platforms": ["netflix", "hbo", "prime"],
+  "timestamps": [
+    {
+      "start": "00:15:30",
+      "end": "00:17:00",
+      "type": "violence",
+      "severity": 6,
+      "description": "Chase and gunfire sequence",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "00:42:00",
+      "end": "00:43:30",
+      "type": "violence",
+      "severity": 5,
+      "description": "Dream attack scene - shooting",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "01:05:00",
+      "end": "01:08:00",
+      "type": "violence",
+      "severity": 7,
+      "description": "Snow fortress assault - extended gunfire sequence",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "01:22:00",
+      "end": "01:24:00",
+      "type": "frightening",
+      "severity": 6,
+      "description": "Limbo sequence - disturbing imagery, sense of endless time",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "01:35:00",
+      "end": "01:38:00",
+      "type": "violence",
+      "severity": 6,
+      "description": "Van chase and explosion",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "01:55:00",
+      "end": "01:58:00",
+      "type": "frightening",
+      "severity": 7,
+      "description": "Mal confrontation - emotionally intense, suicide reference",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    }
+  ],
+  "metadata": {
+    "last_updated": "2025-01-17T00:00:00Z",
+    "contributors": ["FilterFlix Team"],
+    "confidence_score": 0.55,
+    "version": 1
+  }
+}

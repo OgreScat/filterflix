@@ -1,0 +1,78 @@
+{
+  "title": "The Shawshank Redemption",
+  "imdb_id": "tt0111161",
+  "year": 1994,
+  "runtime_minutes": 142,
+  "platforms": ["netflix", "hbo", "prime"],
+  "timestamps": [
+    {
+      "start": "00:08:00",
+      "end": "00:10:00",
+      "type": "violence",
+      "severity": 6,
+      "description": "Prison arrival - new inmates hazed and beaten",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "00:18:00",
+      "end": "00:21:00",
+      "type": "violence",
+      "severity": 8,
+      "description": "Sisters assault scene - implied sexual violence (not shown explicitly)",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "00:35:00",
+      "end": "00:36:30",
+      "type": "violence",
+      "severity": 7,
+      "description": "Guard brutality - inmate beaten severely",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "00:52:00",
+      "end": "00:53:00",
+      "type": "profanity",
+      "severity": 5,
+      "description": "Strong language during confrontation",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "01:28:00",
+      "end": "01:30:00",
+      "type": "violence",
+      "severity": 7,
+      "description": "Tommy's death scene - shooting",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "01:45:00",
+      "end": "01:47:00",
+      "type": "violence",
+      "severity": 6,
+      "description": "Warden's final scene - suicide (implied, not graphic)",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "01:52:00",
+      "end": "01:54:00",
+      "type": "frightening",
+      "severity": 5,
+      "description": "Brooks's despair sequence - emotionally intense themes",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    }
+  ],
+  "metadata": {
+    "last_updated": "2025-01-17T00:00:00Z",
+    "contributors": ["FilterFlix Team"],
+    "confidence_score": 0.6,
+    "version": 1
+  }
+}

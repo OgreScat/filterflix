@@ -1,0 +1,78 @@
+{
+  "title": "The Dark Knight",
+  "imdb_id": "tt0468569",
+  "year": 2008,
+  "runtime_minutes": 152,
+  "platforms": ["netflix", "hbo", "prime"],
+  "timestamps": [
+    {
+      "start": "00:04:30",
+      "end": "00:06:00",
+      "type": "violence",
+      "severity": 7,
+      "description": "Bank robbery opening - gunfire, hostages threatened",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "00:23:15",
+      "end": "00:24:00",
+      "type": "violence",
+      "severity": 9,
+      "description": "Joker's pencil trick scene - graphic implied violence",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "00:38:00",
+      "end": "00:39:30",
+      "type": "violence",
+      "severity": 8,
+      "description": "Joker video torture scene - disturbing imagery",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "00:55:00",
+      "end": "00:56:45",
+      "type": "violence",
+      "severity": 7,
+      "description": "Hospital scene - explosion, chaos",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "01:12:00",
+      "end": "01:14:30",
+      "type": "violence",
+      "severity": 8,
+      "description": "Harvey Dent transformation - burn injuries shown",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "01:45:00",
+      "end": "01:47:00",
+      "type": "frightening",
+      "severity": 7,
+      "description": "Two Boats dilemma - intense psychological tension",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    },
+    {
+      "start": "02:05:00",
+      "end": "02:08:00",
+      "type": "violence",
+      "severity": 8,
+      "description": "Final confrontation - multiple characters in mortal danger",
+      "source": "IMDb Parents Guide - estimated",
+      "verified": false
+    }
+  ],
+  "metadata": {
+    "last_updated": "2025-01-17T00:00:00Z",
+    "contributors": ["FilterFlix Team"],
+    "confidence_score": 0.55,
+    "version": 1
+  }
+}
